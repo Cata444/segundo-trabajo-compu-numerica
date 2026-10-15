@@ -122,7 +122,31 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
 
 ## Metodos Abiertos
 def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
-    pass
+    lista_iteraciones = []
+    p_previo = p0
+
+    for n in range(1, max_iter + 1):
+        p_n = g(p_previo)
+
+        if not np.isfinite(p_n):
+            return {"aplicable": True, "convergencia": False, "raiz": None,
+                    "iteraciones": n, "lista_iteraciones": lista_iteraciones,
+                    "motivo": "El metodo diverge (valor no finito)."}
+
+        err_abs = error_absoluto(p_n, p_previo)
+        err_rel = error_relativo_porcentual(p_previo, p_n)
+        lista_iteraciones.append([n, p_previo, p_n, err_abs, err_rel])
+
+        if err_abs < tol:
+            return {"aplicable": True, "convergencia": True, "raiz": p_n,
+                    "iteraciones": n, "lista_iteraciones": lista_iteraciones,
+                    "motivo": f"Convergio con tolerancia {tol}"}
+
+        p_previo = p_n
+
+    return {"aplicable": True, "convergencia": False, "raiz": p_n,
+            "iteraciones": max_iter, "lista_iteraciones": lista_iteraciones,
+            "motivo": f"Se alcanzo el maximo de iteraciones sin cumplir tol={tol}"}
 
 def newton_raphson():
     pass
