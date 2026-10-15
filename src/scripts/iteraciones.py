@@ -1,12 +1,13 @@
 import numpy as np
 import funciones as fn
+from typing import Callable
 #Zonas de Variables Globales.
 TOLERANCIA = 1e-6
 MAX_ITER = 100
 # Zona de Metodos
 ## Metodos Cerrados
 
-def biseccion(f: function, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
+def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
     #   Biseccion requiere de dos valores iniciales a y b que se encuentran dentro de un intervalo donde se encontraria una raiz
     #   para ello primero revisamos con el teorema de Bolzano si hay un cambio de signo en el intervalo [a, b] si es asi,
     #   entonces podemos aplicar el metodo de biseccion, si no hay un cambio de signo entonces no podemos aplicar el metodo de biseccion.
@@ -66,7 +67,7 @@ def biseccion(f: function, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
             "lista_iteraciones": lista_iteraciones,
             "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}
  
-def falsa_posicion(f: function, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
+def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
     a = intervalo[0]
     b = intervalo[1]
     if not(bolzano(f, a, b)):
@@ -117,11 +118,12 @@ def falsa_posicion(f: function, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
             "raiz": p_n,
             "iteraciones": max_iter,
             "lista_iteraciones": lista_iteraciones,
-            "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}    
-    
+            "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}
+
 ## Metodos Abiertos
-def punto_fijo():
+def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
     pass
+
 def newton_raphson():
     pass
 def secante():
@@ -130,7 +132,7 @@ def newton_raphson_modificado():
     pass
 
 ## Teorema de Bolzano para saber si hay una raiz en el intervalo [a, b]
-def bolzano(f: function, a, b):
+def bolzano(f: Callable, a, b):
     if f(a) * f(b) < 0:
         return True
     else:
@@ -155,6 +157,8 @@ if __name__ == "__main__":
     #print(biseccion(fn.fun_1, [fn.a_1, fn.b_1])["raiz"] - 1.5213797068)
     #print("\n")
     #print("---------------------------------------------------------------------\n")
-    #print(falsa_posicion(fn.fun_1, [fn.a_1, fn.b_1])["raiz"] - 1.5213797068)
+    #print(falsa_posicion(fn.fun_4, [fn.a_4, fn.b_4]))
     #print("\n")
+    #print("---------------------------------------------------------------------\n")
+    #print(punto_fijo(fn.puntofijo_5, fn.x0_5))
     pass
