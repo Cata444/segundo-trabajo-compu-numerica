@@ -9,7 +9,7 @@ Se implementan seis métodos numéricos para encontrar raíces de ecuaciones y s
 | Integrante | Rama | Github |
 |---|---|---|
 | Catalina | `Catalina` | Cata444 |
-| Carlos | `Carlos` | Korexplayer |
+| Carlos | `CarlosGranda` | Korexplayer |
  
 El código evaluado es el que está en `main`. trabajamos cada uno en una rama particular y los cambios se integraron mediante pull requests.
 
