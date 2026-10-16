@@ -31,7 +31,6 @@ def generar_csv_resumen(lista_diccionarios):
     print(f"Archivo resumen_convergencias.csv generado con exito en src/data.")
 
 def generar_csv_funciones(lista_diccionarios):
-    
     for i in range(len(lista_diccionarios)):
         nombre = NOMBRES[i]
         datos = []
@@ -71,5 +70,3 @@ def crear_archivos_per_funcion():
 
 if __name__ == "__main__":
     crear_archivos_per_funcion()
-    
-    pass
