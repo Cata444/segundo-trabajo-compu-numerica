@@ -60,7 +60,7 @@ def crear_archivos_per_funcion():
         dic_falsa_posicion = ite.falsa_posicion(f, intervalo, tol=ite.TOLERANCIA, max_iter=ite.MAX_ITER)
 
         # Punto fijo
-        dic_punto_fijo = ite.punto_fijo(g, x0, tol=ite.TOLERANCIA, max_iter=ite.MAX_ITER)
+        dic_punto_fijo = ite.punto_fijo(g, x0, f, tol=ite.TOLERANCIA, max_iter=ite.MAX_ITER)
 
         lista_diccionarios.append([dic_biseccion, dic_falsa_posicion, dic_punto_fijo])
 

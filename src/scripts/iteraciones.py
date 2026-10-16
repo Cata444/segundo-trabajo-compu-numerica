@@ -201,7 +201,7 @@ def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
     else:
         return False
 
-## Estimador de iteraciones por tolerancia para el metodo de biseccion y falsa posicion
+## Estimador de iteraciones por tolerancia para el metodo de biseccion
 def estimador_iteraciones(tol, a, b):
     return np.ceil(np.log((b - a) / tol) / np.log(2))
 
@@ -209,10 +209,10 @@ def estimador_iteraciones(tol, a, b):
 def error_absoluto(x_n, x_n_1):
     return np.abs(x_n - x_n_1)
 
-def error_relativo_porcentual(a, b):
-    if b == 0:
+def error_relativo_porcentual(p_n, p_n1):
+    if p_n == 0:
         return np.nan
-    return np.abs((b - a) / b) * 100
+    return np.abs((p_n - p_n1) / p_n) * 100
 
 if __name__ == "__main__":
     # Llamada a las funciones de iteraciones para cada función
