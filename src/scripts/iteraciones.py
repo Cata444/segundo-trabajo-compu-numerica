@@ -193,6 +193,12 @@ def bolzano(f: Callable, a, b):
     else:
         return False
 
+def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
+    if ((f(x) == 0 and f_1(x) == 0) and f_2(x) != 0):
+        return True
+    else:
+        return False
+
 ## Estimador de iteraciones por tolerancia para el metodo de biseccion y falsa posicion
 def estimador_iteraciones(tol, a, b):
     return np.ceil(np.log((b - a) / tol) / np.log(2))
