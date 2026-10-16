@@ -137,13 +137,16 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
             "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}
 
 ## Metodos Abiertos
-def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
+def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX_ITER):
     lista_iteraciones = []
     p_previo = p0
-
+    f_pn = 0
     for n in range(1, max_iter + 1):
         p_n = g(p_previo)
-
+        if f != None:
+            f_pn =f(p_n)
+        else:
+            f_pn = "NA"
         if not np.isfinite(p_n):
             return {"metodo": "Punto Fijo",
                     "aplicable": True, 
@@ -151,14 +154,13 @@ def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
                     "raiz": None,
                     "iteraciones": n, 
                     "lista_iteraciones": lista_iteraciones, 
-                    "columnas": ["iteracion", "p_previo", "p_n", "err_abs", "err_rel_pct"], 
+                    "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"], 
                     "motivo": "El metodo diverge (valor no finito)."}
 
         err_abs = error_absoluto(p_n, p_previo)
         err_rel = error_relativo_porcentual(p_n, p_previo)
-        lista_iteraciones.append([n, p_previo, p_n, err_abs, err_rel])
-
-        if err_abs < tol:
+        lista_iteraciones.append([n, p_previo, p_n, f_pn, err_abs, err_rel])
+        if err_abs < tol or np.abs(f_pn):
             return {"metodo": "Punto Fijo",
                     "aplicable": True, 
                     "convergencia": True, 
