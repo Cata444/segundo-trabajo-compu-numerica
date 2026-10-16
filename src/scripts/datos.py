@@ -1,7 +1,6 @@
 import iteraciones as ite
 import funciones as fn
 import numpy as np
-from typing import Callable
 from pathlib import Path
 
 NOMBRES = ["Polinomica", "Raiz doble", "Logaritmica", "Exponencial", "Trigonometrica", "Mixta"]
@@ -31,8 +30,21 @@ def generar_csv_resumen(lista_diccionarios):
     np.savetxt(Path("src/data") / "resumen_convergencias.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
     print(f"Archivo resumen_convergencias.csv generado con exito en src/data.")
 
-def generar_csv_iteraciones(nombre, lista_diccionarios):
-    pass
+def generar_csv_funciones(lista_diccionarios):
+    
+    for i in range(len(lista_diccionarios)):
+        nombre = NOMBRES[i]
+        datos = []
+        for j in range(len(lista_diccionarios[i])):
+            diccionario = lista_diccionarios[i][j]
+            metodo = diccionario["metodo"]
+            for sublista in diccionario["lista_iteraciones"]:
+                x, f_x = sublista[-4], sublista[-3]
+                datos.append([metodo, x, f_x])
+        columnas = ["Metodo", "x", "f(x)"]
+        filas = np.array(datos, dtype=object)
+        np.savetxt(Path("src/data") / f"funcion_{nombre}.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
+        print(f"Archivo funcion_{nombre}.csv generado con exito en src/data.")
 
 def crear_archivos_per_funcion():
     lista_diccionarios = []
@@ -54,7 +66,7 @@ def crear_archivos_per_funcion():
         lista_diccionarios.append([dic_biseccion, dic_falsa_posicion, dic_punto_fijo])
 
     generar_csv_resumen(lista_diccionarios)
-    #generar_csv_iteraciones(nombre, [dic_biseccion, dic_falsa_posicion, dic_punto_fijo])
+    generar_csv_funciones(lista_diccionarios)
 
 
 if __name__ == "__main__":
