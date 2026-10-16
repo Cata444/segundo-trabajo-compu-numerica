@@ -192,7 +192,7 @@ def newton_raphson(funcion, mi_derivada, punto_inicio, tol=TOLERANCIA, max_iter=
     while abs(funcion(x)) >= tol and i < max_iter:
         i = i + 1
         x_nuevo = x - funcion(x) / mi_derivada(x)
-        lista_iteraciones.append([i, x, x_nuevo, abs(x_nuevo - x)])
+        lista_iteraciones.append([i, x, x_nuevo, funcion(x_nuevo), abs(x_nuevo - x), error_relativo_porcentual(x_nuevo, x)])
         x = x_nuevo
 
     encontramos_raiz = abs(funcion(x)) < tol
@@ -203,7 +203,7 @@ def newton_raphson(funcion, mi_derivada, punto_inicio, tol=TOLERANCIA, max_iter=
             "raiz": x,
             "iteraciones": i,
             "lista_iteraciones": lista_iteraciones,
-            "columnas": ["iteracion", "x", "x_nuevo", "err_abs"],
+            "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"],
             "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
 
 
@@ -217,7 +217,7 @@ def newton_raphson_modificado(funcion, mi_derivada, mi_segunda_derivada, punto_i
         arriba = funcion(x) * mi_derivada(x)
         abajo = mi_derivada(x)**2 - funcion(x) * mi_segunda_derivada(x)
         x_nuevo = x - arriba / abajo
-        lista_iteraciones.append([i, x, x_nuevo, abs(x_nuevo - x)])
+        lista_iteraciones.append([i, x, x_nuevo, funcion(x_nuevo), abs(x_nuevo - x), error_relativo_porcentual(x_nuevo, x)])
         x = x_nuevo
 
     encontramos_raiz = abs(funcion(x)) < tol
@@ -228,11 +228,35 @@ def newton_raphson_modificado(funcion, mi_derivada, mi_segunda_derivada, punto_i
             "raiz": x,
             "iteraciones": i,
             "lista_iteraciones": lista_iteraciones,
-            "columnas": ["iteracion", "x", "x_nuevo", "err_abs"],
+            "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"],
             "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
 
-def secante():
-    pass
+def secante(funcion, punto_inicio, punto_dos, tol=TOLERANCIA, max_iter=MAX_ITER):
+    x_antes = punto_inicio
+    x = punto_dos
+    lista_iteraciones = []
+    i = 0
+
+    while abs(funcion(x)) >= tol and i < max_iter:
+        i = i + 1
+        arriba = funcion(x) * (x - x_antes)
+        abajo = funcion(x) - funcion(x_antes)
+        x_nuevo = x - arriba / abajo
+        lista_iteraciones.append([i, x, x_nuevo, funcion(x_nuevo), abs(x_nuevo - x), error_relativo_porcentual(x_nuevo, x)])
+        x_antes = x
+        x = x_nuevo
+
+    encontramos_raiz = abs(funcion(x)) < tol
+
+    return {"metodo": "Secante",
+            "aplicable": True,
+            "convergencia": encontramos_raiz,
+            "raiz": x,
+            "iteraciones": i,
+            "lista_iteraciones": lista_iteraciones,
+            "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"],
+            "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
+    
 
 ## Teorema de Bolzano para saber si hay una raiz en el intervalo [a, b]
 def bolzano(f: Callable, a, b):
