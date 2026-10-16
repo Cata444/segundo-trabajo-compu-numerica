@@ -1,3 +1,29 @@
+# La raíz que se esconde — Búsqueda de raíces y convergencia
+ 
+Laboratorio evaluado 2 de Computación Numérica · Universidad Católica del Maule.
+ 
+Se implementan seis métodos numéricos para encontrar raíces de ecuaciones y se compara, con datos y gráficos, **cuánto le cuesta a cada uno** llegar a la raíz: cuántas iteraciones necesita, con qué error y en qué casos falla.
+ 
+## Integrantes
+ 
+| Integrante | Rama | Github |
+|---|---|---|
+| Catalina | `Catalina` | Cata444 |
+| Carlos | `Carlos` | Korexplayer |
+ 
+El código evaluado es el que está en `main`. trabajamos cada uno en una rama particular y los cambios se integraron mediante pull requests.
+
+## Métodos implementados
+ 
+| Método | Tipo | Necesita | Orden de convergencia |
+|---|---|---|---|
+| Bisección | Cerrado | Intervalo con cambio de signo | Lineal |
+| Falsa posición | Cerrado | Intervalo con cambio de signo | Lineal |
+| Punto fijo | Abierto | x₀ y una g(x) con \|g'(x)\| < 1 cerca de la raíz | Lineal |
+| Secante | Abierto | Dos puntos iniciales x₀ y x₁ | Superlineal (≈ 1.618) |
+| Newton-Raphson | Abierto | x₀ y la derivada f'(x) | Cuadrático en raíces simples |
+| Newton-Raphson modificado | Abierto | x₀, f'(x) y f''(x) | Cuadrático, también en raíces múltiples |
+
 ## Estructura
 
 ```
