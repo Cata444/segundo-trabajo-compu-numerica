@@ -1,6 +1,6 @@
 import numpy as np
 
-# Teniamos que definir
+# Teniamos que definirla tolerancia TOL y el numero maximo de iteraciones
 TOL = 1e-6
 MAX_ITER = 100
 
