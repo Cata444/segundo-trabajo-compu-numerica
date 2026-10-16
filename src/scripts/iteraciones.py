@@ -17,7 +17,8 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
     b = intervalo[1]
     if not(bolzano(f, a, b)):
         print("No hay un cambio de signo en el intervalo [a, b], no se puede aplicar el metodo de biseccion.")
-        return {"aplicable": False, 
+        return {"metodo": "Biseccion",
+                "aplicable": False, 
                 "convergencia": False, 
                 "raiz": None, 
                 "iteraciones": 0, 
@@ -40,7 +41,8 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
         lista_iteraciones.append([i, a, b, f_a, p_n, f_p, err_abs, err_rel])
         
         if np.abs(f_p) < tol or err_abs < tol:
-            return {"aplicable": True, 
+            return {"metodo": "Biseccion",
+                    "aplicable": True, 
                     "convergencia": True, 
                     "raiz": p_n, 
                     "iteraciones": i, 
@@ -54,7 +56,8 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
             a = p_n
             f_a = f_p
         else:
-            return {"aplicable": True, 
+            return {"metodo": "Biseccion",
+                    "aplicable": True, 
                     "convergencia": True, 
                     "raiz": p_n, 
                     "iteraciones": i, 
@@ -63,7 +66,8 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
                     "motivo": "Se encontro una raiz exacta en el intervalo [a, b]"}
         p_previo = p_n
         
-    return {"aplicable": True, 
+    return {"metodo": "Biseccion",
+            "aplicable": True, 
             "convergencia": False,
             "raiz": p_n,
             "iteraciones": max_iter,
@@ -76,7 +80,8 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
     b = intervalo[1]
     if not(bolzano(f, a, b)):
         print("No hay un cambio de signo en el intervalo [a, b], no se puede aplicar el metodo de falsa posicion.")
-        return {"aplicable": False, 
+        return {"metodo": "Falsa Posicion",
+                "aplicable": False, 
                 "convergencia": False, 
                 "raiz": None, 
                 "iteraciones": 0, 
@@ -98,7 +103,8 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
         lista_iteraciones.append([i, a, b, f_a, p_n, f_p, err_abs, err_rel])
         
         if np.abs(f_p) < tol or err_abs < tol:
-            return {"aplicable": True, 
+            return {"metodo": "Falsa Posicion",
+                    "aplicable": True, 
                     "convergencia": True, 
                     "raiz": p_n, 
                     "iteraciones": i, 
@@ -112,7 +118,8 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
             a = p_n
             f_a = f_p
         else:
-            return {"aplicable": True, 
+            return {"metodo": "Falsa Posicion",
+                    "aplicable": True, 
                     "convergencia": True, 
                     "raiz": p_n, 
                     "iteraciones": i, 
@@ -120,7 +127,8 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
                     "columnas": ["iteracion", "a", "b", "f_a", "p_n", "f_p", "err_abs", "err_rel_pct"], 
                     "motivo": "Se encontro una raiz exacta en el intervalo [a, b]"}
         p_previo = p_n
-    return {"aplicable": True, 
+    return {"metodo": "Falsa Posicion",
+            "aplicable": True, 
             "convergencia": False,
             "raiz": p_n,
             "iteraciones": max_iter,
@@ -137,7 +145,8 @@ def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
         p_n = g(p_previo)
 
         if not np.isfinite(p_n):
-            return {"aplicable": True, 
+            return {"metodo": "Punto Fijo",
+                    "aplicable": True, 
                     "convergencia": False, 
                     "raiz": None,
                     "iteraciones": n, 
@@ -150,7 +159,8 @@ def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
         lista_iteraciones.append([n, p_previo, p_n, err_abs, err_rel])
 
         if err_abs < tol:
-            return {"aplicable": True, 
+            return {"metodo": "Punto Fijo",
+                    "aplicable": True, 
                     "convergencia": True, 
                     "raiz": p_n,
                     "iteraciones": n, 
@@ -160,7 +170,8 @@ def punto_fijo(g: Callable, p0, tol=TOLERANCIA, max_iter=MAX_ITER):
 
         p_previo = p_n
 
-    return {"aplicable": True, 
+    return {"metodo": "Punto Fijo",
+            "aplicable": True, 
             "convergencia": False, 
             "raiz": p_n,
             "iteraciones": max_iter, 
@@ -197,7 +208,7 @@ def error_relativo_porcentual(a, b):
 
 if __name__ == "__main__":
     # Llamada a las funciones de iteraciones para cada función
-    
+
     #print("\n")
     # #print(biseccion(fn.fun_1, [fn.a_1, fn.b_1])["raiz"] - 1.5213797068)
     #print("---------------------------------------------------------------------\n")
