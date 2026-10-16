@@ -183,11 +183,55 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
             "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"], 
             "motivo": f"Se alcanzo el maximo de iteraciones sin cumplir tol={tol}"}
 
-def newton_raphson():
-    pass
+
+def newton_raphson(funcion, mi_derivada, punto_inicio, tol=TOLERANCIA, max_iter=MAX_ITER):
+    x = punto_inicio
+    lista_iteraciones = []
+    i = 0
+
+    while abs(funcion(x)) >= tol and i < max_iter:
+        i = i + 1
+        x_nuevo = x - funcion(x) / mi_derivada(x)
+        lista_iteraciones.append([i, x, x_nuevo, abs(x_nuevo - x)])
+        x = x_nuevo
+
+    encontramos_raiz = abs(funcion(x)) < tol
+
+    return {"metodo": "Newton-Raphson",
+            "aplicable": True,
+            "convergencia": encontramos_raiz,
+            "raiz": x,
+            "iteraciones": i,
+            "lista_iteraciones": lista_iteraciones,
+            "columnas": ["iteracion", "x", "x_nuevo", "err_abs"],
+            "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
+
+
+def newton_raphson_modificado(funcion, mi_derivada, mi_segunda_derivada, punto_inicio, tol=TOLERANCIA, max_iter=MAX_ITER):
+    x = punto_inicio
+    lista_iteraciones = []
+    i = 0
+
+    while abs(funcion(x)) >= tol and i < max_iter:
+        i = i + 1
+        arriba = funcion(x) * mi_derivada(x)
+        abajo = mi_derivada(x)**2 - funcion(x) * mi_segunda_derivada(x)
+        x_nuevo = x - arriba / abajo
+        lista_iteraciones.append([i, x, x_nuevo, abs(x_nuevo - x)])
+        x = x_nuevo
+
+    encontramos_raiz = abs(funcion(x)) < tol
+
+    return {"metodo": "Newton-Raphson modificado",
+            "aplicable": True,
+            "convergencia": encontramos_raiz,
+            "raiz": x,
+            "iteraciones": i,
+            "lista_iteraciones": lista_iteraciones,
+            "columnas": ["iteracion", "x", "x_nuevo", "err_abs"],
+            "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
+
 def secante():
-    pass
-def newton_raphson_modificado():
     pass
 
 ## Teorema de Bolzano para saber si hay una raiz en el intervalo [a, b]
