@@ -146,7 +146,7 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
         if f != None:
             f_pn =f(p_n)
         else:
-            f_pn = "NA"
+            f_pn = np.nan
         if not np.isfinite(p_n):
             return {"metodo": "Punto Fijo",
                     "aplicable": True, 
@@ -160,7 +160,7 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
         err_abs = error_absoluto(p_n, p_previo)
         err_rel = error_relativo_porcentual(p_n, p_previo)
         lista_iteraciones.append([n, p_previo, p_n, f_pn, err_abs, err_rel])
-        if err_abs < tol or np.abs(f_pn):
+        if err_abs < tol or np.abs(f_pn) < tol:
             return {"metodo": "Punto Fijo",
                     "aplicable": True, 
                     "convergencia": True, 
@@ -196,10 +196,10 @@ def bolzano(f: Callable, a, b):
         return False
 
 def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
-    if ((f(x) == 0 and f_1(x) == 0) and f_2(x) != 0):
-        return True
-    else:
-        return False
+    f_cero  = np.isclose(f(x), 0, atol=TOLERANCIA)
+    f1_cero = np.isclose(f_1(x), 0, atol=TOLERANCIA)
+    f2_cero = np.isclose(f_2(x), 0, atol=TOLERANCIA)
+    return bool(f_cero and f1_cero and not f2_cero)
 
 ## Estimador de iteraciones por tolerancia para el metodo de biseccion
 def estimador_iteraciones(tol, a, b):
