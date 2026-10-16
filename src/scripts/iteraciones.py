@@ -169,7 +169,7 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
                     "raiz": p_n,
                     "iteraciones": n, 
                     "lista_iteraciones": lista_iteraciones, 
-                    "columnas": ["iteracion", "p_previo", "p_n", "err_abs", "err_rel_pct"], 
+                    "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"], 
                     "motivo": f"Convergio con tolerancia {tol}"}
 
         p_previo = p_n
@@ -180,7 +180,7 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
             "raiz": p_n,
             "iteraciones": max_iter, 
             "lista_iteraciones": lista_iteraciones, 
-            "columnas": ["iteracion", "p_previo", "p_n", "err_abs", "err_rel_pct"], 
+            "columnas": ["iteracion", "p_previo", "p_n", "f_p", "err_abs", "err_rel_pct"], 
             "motivo": f"Se alcanzo el maximo de iteraciones sin cumplir tol={tol}"}
 
 def newton_raphson():
