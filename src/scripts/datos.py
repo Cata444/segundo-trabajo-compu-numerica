@@ -9,6 +9,8 @@ PUNTO_FIJO = [fn.puntofijo_1, fn.puntofijo_2, fn.puntofijo_3, fn.puntofijo_4, fn
 INTERVALOS = [[fn.a_1, fn.b_1], [fn.a_2, fn.b_2], [fn.a_3, fn.b_3],
               [fn.a_4, fn.b_4], [fn.a_5, fn.b_5], [fn.a_6, fn.b_6]]
 X0 = [fn.x0_1, fn.x0_2, fn.x0_3, fn.x0_4, fn.x0_5, fn.x0_6]
+DIRECCION = Path("src/data")
+DIRECCION.mkdir(parents= True, exist_ok= True)
 
 def generar_csv_resumen(lista_diccionarios):
     datos = []
@@ -27,7 +29,7 @@ def generar_csv_resumen(lista_diccionarios):
             motivo = diccionario["motivo"].replace(",", ";")
             datos.append([metodo, funcion, aplicable, convergencia, raiz, iteraciones, error_absoluto_final, motivo])
     filas = np.array(datos, dtype=object)
-    np.savetxt(Path("src/data") / "resumen_convergencias.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
+    np.savetxt( DIRECCION / "resumen_convergencias.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
     print(f"Archivo resumen_convergencias.csv generado con exito en src/data.")
 
 def generar_csv_funciones(lista_diccionarios):
@@ -42,7 +44,7 @@ def generar_csv_funciones(lista_diccionarios):
                 datos.append([metodo, x, f_x])
         columnas = ["Metodo", "x", "f(x)"]
         filas = np.array(datos, dtype=object)
-        np.savetxt(Path("src/data") / f"funcion_{nombre}.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
+        np.savetxt(DIRECCION / f"funcion_{nombre}.csv", filas, delimiter=",", fmt="%s", header=",".join(columnas), comments="")
         print(f"Archivo funcion_{nombre}.csv generado con exito en src/data.")
 
 def crear_archivos_per_funcion():
