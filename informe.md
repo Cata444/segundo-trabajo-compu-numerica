@@ -1,8 +1,5 @@
 # La raíz que se esconde — Comparación de métodos de búsqueda de raíces
 
-Laboratorio evaluado 2 — Iteración funcional para ecuaciones (búsqueda de raíces y análisis de convergencia).
-Universidad Católica del Maule.
-
 ## Objetivo
 
 Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de distinta naturaleza, y mostrar con datos y gráficos en qué se diferencian al converger:
