@@ -4,15 +4,12 @@ from typing import Callable
 #Zonas de Variables Globales.
 TOLERANCIA = 1e-6
 MAX_ITER = 100
+
 # Zona de Metodos
+
 ## Metodos Cerrados
 
 def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
-    #   Biseccion requiere de dos valores iniciales a y b que se encuentran dentro de un intervalo donde se encontraria una raiz
-    #   para ello primero revisamos con el teorema de Bolzano si hay un cambio de signo en el intervalo [a, b] si es asi,
-    #   entonces podemos aplicar el metodo de biseccion, si no hay un cambio de signo entonces no podemos aplicar el metodo de biseccion.
-
-    #   Primero verificaremos usando el teorema de Bolzano si hay un cambio de signo en el intervalo [a, b]
     a = intervalo[0]
     b = intervalo[1]
     if not(bolzano(f, a, b)):
@@ -28,7 +25,6 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
     f_a = f(a)
     p_previo = None
     lista_iteraciones = []
-    #   Ahora aplicamos el metodo de biseccion
     for i in range(1, max_iter + 1):
         p_n = (a + b) / 2
         f_p = f(p_n)
@@ -265,10 +261,15 @@ def bolzano(f: Callable, a, b):
     else:
         return False
 
+## Tangencia a la al eje, Con esto podemos determinar la convergencia de la raiz doble.
 def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
+    # f(x) = 0
     f_cero  = np.isclose(f(x), 0, atol=TOLERANCIA)
+    # f'(x) = 0
     f1_cero = np.isclose(f_1(x), 0, atol=TOLERANCIA)
+    # f''(x) ≠ 0
     f2_cero = np.isclose(f_2(x), 0, atol=TOLERANCIA)
+    # f(x) = 0 ^ f'(x) = 0 ^ f''(x) ≠ 0 -> True, si no False
     return bool(f_cero and f1_cero and not f2_cero)
 
 ## Estimador de iteraciones por tolerancia para el metodo de biseccion
@@ -286,12 +287,4 @@ def error_relativo_porcentual(p_n, p_n1):
 
 if __name__ == "__main__":
     # Llamada a las funciones de iteraciones para cada función
-
-    #print("\n")
-    # #print(biseccion(fn.fun_1, [fn.a_1, fn.b_1])["raiz"] - 1.5213797068)
-    #print("---------------------------------------------------------------------\n")
-    #print(falsa_posicion(fn.fun_4, [fn.a_4, fn.b_4]))
-    #print("\n")
-    #print("---------------------------------------------------------------------\n")
-    #print(punto_fijo(fn.puntofijo_5, fn.x0_5))
     pass
