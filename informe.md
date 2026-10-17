@@ -54,13 +54,90 @@ Para punto fijo se despeja x de f(x) = 0 y se itera x = g(x). Converge si |g'(x)
 
 Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/funciones.py"
 
-## Resultados
+## Resultados completos
 
+### Función 1 — Polinómica: x³ − x − 2, intervalo [1, 2], x₀ = 1.5
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | 20 | 1.5213804245 | 4.3e-06 | 9.5e-07 | 7.2e-07 | Sí |
+| Falsa posición | 12 | 1.5213794618 | 1.5e-06 | 6.0e-07 | 2.5e-07 | Sí |
+| Punto fijo | 7 | 1.5213796793 | 1.6e-07 | 1.6e-07 | 2.8e-08 | Sí |
+| Secante | 4 | 1.5213796948 | 7.1e-08 | 8.7e-06 | 1.2e-08 | Sí |
+| Newton | **2** | 1.5213798060 | 5.9e-07 | 3.6e-04 | 9.9e-08 | Sí |
+| Newton mod. | **2** | 1.5213796095 | 5.8e-07 | 3.6e-04 | 9.7e-08 | Sí |
+
+### Función 2 — Raíz doble: (x − 2)², x₀ = 1.2 (sin cambio de signo)
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | — | — | — | — | — | No aplica |
+| Falsa posición | — | — | — | — | — | No aplica |
+| Punto fijo | 100 | 1.9630269946 | 1.4e-03 | 3.5e-04 | 3.7e-02 | **No** |
+| Secante | 13 | 1.9990432911 | 9.2e-07 | 5.9e-04 | 9.6e-04 | Sí |
+| Newton | 10 | 1.9992187500 | 6.1e-07 | 7.8e-04 | 7.8e-04 | Sí |
+| Newton mod. | **1** | 2.0000000000 | 0 | 8.0e-01 | **0** | Sí |
+
+### Función 3 — Logarítmica: ln(x) + x − 4, intervalo [2, 3], x₀ = 2.5
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | 19 | 2.9262714386 | 5.0e-07 | 1.9e-06 | 3.8e-07 | Sí |
+| Falsa posición | 4 | 2.9262714818 | 5.6e-07 | 8.1e-06 | 4.2e-07 | Sí |
+| Punto fijo | 13 | 2.9262714540 | 5.3e-07 | 1.5e-06 | 3.9e-07 | Sí |
+| Secante | **3** | 2.9262710627 | 4.0e-10 | 4.6e-06 | 3.0e-10 | Sí |
+| Newton | **3** | 2.9262710624 | 8.5e-13 | 3.8e-06 | 6.3e-13 | Sí |
+| Newton mod. | **3** | 2.9262710624 | 1.9e-12 | 5.7e-06 | 1.4e-12 | Sí |
+
+### Función 4 — Exponencial: e⁻ˣ − x, intervalo [0, 1], x₀ = 0.5
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | 20 | 0.5671434402 | 2.3e-07 | 9.5e-07 | 1.5e-07 | Sí |
+| Falsa posición | 7 | 0.5671433760 | 1.3e-07 | 6.8e-07 | 8.6e-08 | Sí |
+| Punto fijo | 21 | 0.5671437514 | 7.2e-07 | 1.3e-06 | 4.6e-07 | Sí |
+| Secante | 3 | 0.5671436165 | 5.1e-07 | 3.6e-04 | 3.3e-07 | Sí |
+| Newton | **2** | 0.5671431650 | 2.0e-07 | 8.3e-04 | 1.3e-07 | Sí |
+| Newton mod. | **2** | 0.5671434274 | 2.1e-07 | 8.7e-04 | 1.4e-07 | Sí |
+
+### Función 5 — Trigonométrica: cos(x) − x, intervalo [0, 1], x₀ = 0.5
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | 20 | 0.7390851974 | 1.1e-07 | 9.5e-07 | 6.4e-08 | Sí |
+| Falsa posición | 5 | 0.7390847824 | 5.9e-07 | 6.7e-06 | 3.5e-07 | Sí |
+| Punto fijo | 33 | 0.7390855939 | 7.7e-07 | 1.1e-06 | 4.6e-07 | Sí |
+| Secante | 4 | 0.7390851329 | 5.3e-10 | 2.1e-06 | 3.2e-10 | Sí |
+| Newton | **3** | 0.7390851339 | 1.2e-09 | 5.7e-05 | 7.1e-10 | Sí |
+| Newton mod. | **3** | 0.7390851322 | 1.8e-09 | 6.9e-05 | 1.0e-09 | Sí |
+
+### Función 6 — Mixta: √x − cos(x), intervalo [0.1, 1], x₀ = 0.5
+ 
+| Método | Iteraciones | Raíz | \|f(raíz)\| | Último paso | Error real | ¿Convergió? |
+|---|---|---|---|---|---|---|
+| Bisección | 20 | 0.6417143822 | 1.4e-08 | 8.6e-07 | 1.1e-08 | Sí |
+| Falsa posición | 4 | 0.6417138392 | 6.5e-07 | 1.1e-05 | 5.3e-07 | Sí |
+| Punto fijo | 100 | 0.6399108035 | 2.2e-03 | 3.7e-03 | 1.8e-03 | **No** |
+| Secante | 3 | 0.6417146220 | 3.1e-07 | 3.0e-04 | 2.5e-07 | Sí |
+| Newton | **2** | 0.6417148668 | 6.1e-07 | 2.0e-03 | 5.0e-07 | Sí |
+| Newton mod. | **2** | 0.6417142563 | 1.4e-07 | 9.4e-04 | 1.1e-07 | Sí |
+
+### Resumen de iteraciones que usaremos para responder las preguntas 
+ 
+| Función | Bisección | Falsa posición | Punto fijo | Secante | Newton | Newton mod. |
+|---|---|---|---|---|---|---|
+| Polinómica | 20 | 12 | 7 | 4 | **2** | **2** |
+| Raíz doble | N/A | N/A | 100 X  | 13 | 10 | **1** |
+| Logarítmica | 19 | 4 | 13 | **3** | **3** | **3** |
+| Exponencial | 20 | 7 | 21 | 3 | **2** | **2** |
+| Trigonométrica | 20 | 5 | 33 | 4 | **3** | **3** |
+| Mixta | 20 | 4 | 100 X | 3 | **2** | **2** |
 
 ## Preguntas de convergencia
 
 ### 1. ¿Qué método convergió en menos iteraciones en cada función? ¿Por qué?
 
+ 
 
 ### 2. ¿Qué orden de convergencia tiene cada método y cómo se refleja en el gráfico |error| vs iteración?
 
@@ -76,6 +153,13 @@ Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/func
 
 
 ### 6. ¿Qué método recomiendan según el tipo de función (velocidad vs robustez)?
+
+| tipo de funcion que tenemos que verificar | metodo que recomendamos |
+|---|---|
+| Hay cambio de signo | Bisección |
+| Se tiene la derivada y un buen x₀ | Newton |
+| No se tiene información de la derivada | Secante |
+| Raíz múltiple (la curva toca el eje) | Newton modificado |
 
 
 
