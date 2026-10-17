@@ -1,4 +1,43 @@
 import numpy as np
+<<<<<<< HEAD
+import matplotlib.pyplot as plt
+from pathlib import Path
+import datos as dt
+def grafico_converguencia():
+    plt.figure()
+    direccion = dt.DIRECCION
+    for nombre in dt.NOMBRES:
+        datos = np.loadtxt(direccion / f"iteraciones_{nombre.replace(' ', '_')}.csv", delimiter=',', skiprows=1, dtype=object)
+        iters = datos[:, 1]
+        errores = datos[:, 4]
+        plt.semilogy(iters, errores, marker="o", label="datos[:,0]")
+        plt.xlabel("Iteración")
+        plt.ylabel("|error| (escala log)")
+        plt.title(f"Convergencia - {nombre}")
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+        plt.savefig(Path("src/assets") /f"convergencia_{nombre}.png")
+        plt.close()
+
+def grafico_curva():
+    plt.figure()
+    direccion = dt.DIRECCION
+    for nombre in dt.NOMBRES:
+        datos = np.loadtxt(direccion / f"funcion_{nombre.replace(' ', '_')}.csv", delimiter=',', skiprows=1)
+        x = datos[:, 0]
+        y = datos[:, 1]
+        plt.plot(x, y, color="blue", linewidth=0.8)
+        plt.axhline(0, color="black", linewidth=0.8) 
+        plt.axvline(0, color="black", linewidth=0.8) 
+        plt.title(f'Gráfico de la funcion {nombre} con puntos')
+        plt.xlabel('Eje X')
+        plt.ylabel('Eje Y')
+        plt.grid(True)
+        plt.savefig(Path("src/assets") / f"Curva{nombre}.png", dpi=150)
+        plt.show()
+        
+=======
 import iteraciones as ite
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -6,6 +45,7 @@ import datos as dt
 
 DIRECCIONG = dt.DIRECCION
 TITULOS = ["x^3 - x - 2", "(x - 2)^2", "ln(x) + x - 4", "e^(-x) - x", "cos(x) - x", "sqrt(x) - cos(x)"]
+>>>>>>> 602cecb3a033254c52754c25c83e7ac4977d197d
 
 def grafico_converguencia_per_metodos():
     for i in range(len(dt.NOMBRES)):
@@ -120,7 +160,12 @@ def grafico_resumen_iteraciones():
 
 if __name__ == "__main__":
     # Ejemplo de uso
+<<<<<<< HEAD
+    grafico_curva()
+    #grafico_converguencia()
+=======
     grafico_curva_funciones()
     grafico_converguencia_per_metodos()
     grafico_resumen_iteraciones()
+>>>>>>> 602cecb3a033254c52754c25c83e7ac4977d197d
     pass
