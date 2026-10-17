@@ -31,8 +31,8 @@ segundo-trabajo-compu-numerica/
 ├── README.md               # entorno (Docker) y qué hace cada script
 ├── informe.md              # respuestas a las preguntas de convergencia y conclusión
 ├── requirements.txt        # numpy, matplotlib
-├── Dockerfile              # imagen con Python 3.12 para ejecutar el proyecto
-├── .dockerignore           # archivos que no se copian al contenedor
+├── Docker/
+    └──  Dockerfile              # imagen con Python 3.12 para ejecutar el proyecto
 ├── .gitignore              # archivos que no se suben a GitHub (__pycache__, venv)
 └── src/
     ├── scripts/
