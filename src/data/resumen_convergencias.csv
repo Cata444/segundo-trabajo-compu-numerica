@@ -1,0 +1,37 @@
+Metodo,Funcion,Aplicable?,Convergencia?,Raiz,Iteraciones,Error Absoluto Final,Motivo
+Biseccion,Polinomica,True,True,1.5213804244995117,20,9.5367431640625e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Falsa Posicion,Polinomica,True,True,1.521379461790157,12,6.033862631760201e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Punto Fijo,Polinomica,True,True,1.5213796792714414,7,1.6365107935456535e-07,Convergio con tolerancia 1e-06
+Newton-Raphson,Polinomica,True,True,1.5213798059647863,2,0.00035932446999642487,Se encontro la raiz
+Newton-Raphson modificado,Polinomica,True,True,1.5213796094955705,2,0.00035584349922679337,Se encontro la raiz
+Secante,Polinomica,True,True,1.5213796947986198,4,8.674126392049786e-06,Se encontro la raiz
+Biseccion,Raiz doble,False,False,None,0,None,No hay un cambio de signo en el intervalo [a; b]; no se puede aplicar el metodo de biseccion.
+Falsa Posicion,Raiz doble,False,False,None,0,None,No hay un cambio de signo en el intervalo [a; b]; no se puede aplicar el metodo de falsa posicion.
+Punto Fijo,Raiz doble,True,False,1.9630269945550196,100,0.0003482184380314557,Se alcanzo el maximo de iteraciones sin cumplir tol=1e-06
+Newton-Raphson,Raiz doble,True,True,1.99921875,10,0.0007812499999999556,Se encontro la raiz
+Newton-Raphson modificado,Raiz doble,True,True,2.0,1,0.8,Se encontro la raiz
+Secante,Raiz doble,True,True,1.9990432910786893,13,0.0005912786947883664,Se encontro la raiz
+Biseccion,Logaritmica,True,True,2.926271438598633,19,1.9073486328125e-06,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Falsa Posicion,Logaritmica,True,True,2.926271481822187,4,8.138093423593062e-06,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Punto Fijo,Logaritmica,True,True,2.9262714540300196,13,1.5374745925278432e-06,Convergio con tolerancia 1e-06
+Newton-Raphson,Logaritmica,True,True,2.9262710624428703,3,3.8061071956363435e-06,Se encontro la raiz
+Newton-Raphson modificado,Logaritmica,True,True,2.926271062444928,3,5.725823562841015e-06,Se encontro la raiz
+Secante,Logaritmica,True,True,2.926271062739667,3,4.64185009807494e-06,Se encontro la raiz
+Biseccion,Exponencial,True,True,0.567143440246582,20,9.5367431640625e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Falsa Posicion,Exponencial,True,True,0.5671433760339214,7,6.843411810564248e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Punto Fijo,Exponencial,True,True,0.5671437514174078,21,1.273866462869755e-06,Convergio con tolerancia 1e-06
+Newton-Raphson,Exponencial,True,True,0.5671431650348622,2,0.0008321618376440076,Se encontro la raiz
+Newton-Raphson modificado,Exponencial,True,True,0.5671434273931901,2,0.0008703064662916038,Se encontro la raiz
+Secante,Exponencial,True,True,0.5671436165414959,3,0.000363349156694337,Se encontro la raiz
+Biseccion,Trigonometrica,True,True,0.7390851974487305,20,9.5367431640625e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Falsa Posicion,Trigonometrica,True,True,0.7390847824489231,5,6.651568897342308e-06,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Punto Fijo,Trigonometrica,True,True,0.7390855938689606,33,1.1445103118568056e-06,Convergio con tolerancia 1e-06
+Newton-Raphson,Trigonometrica,True,True,0.7390851339208068,3,5.653222907242572e-05,Se encontro la raiz
+Newton-Raphson modificado,Trigonometrica,True,True,0.7390851321653727,3,6.894686466529798e-05,Se encontro la raiz
+Secante,Trigonometrica,True,True,0.739085132900112,4,2.0779207539067812e-06,Se encontro la raiz
+Biseccion,Mixta,True,True,0.641714382171631,20,8.583068847878295e-07,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Falsa Posicion,Mixta,True,True,0.6417138391748605,4,1.0779044236741697e-05,Se encontro una raiz en el intervalo [a; b] con una tolerancia de 1e-06
+Punto Fijo,Mixta,True,False,0.6399108034541754,100,0.0036832158904362977,Se alcanzo el maximo de iteraciones sin cumplir tol=1e-06
+Newton-Raphson,Mixta,True,True,0.641714866792004,2,0.001960765013701349,Se encontro la raiz
+Newton-Raphson modificado,Mixta,True,True,0.6417142562525041,2,0.0009444906811537646,Se encontro la raiz
+Secante,Mixta,True,True,0.6417146219797818,3,0.00030350115532962185,Se encontro la raiz
