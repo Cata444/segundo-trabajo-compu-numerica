@@ -2,8 +2,6 @@ import iteraciones as ite
 import funciones as fn
 import numpy as np
 from pathlib import Path
-import graficos as gf
-
 NOMBRES = ["Polinomica", "Raiz doble", "Logaritmica", "Exponencial", "Trigonometrica", "Mixta"]
 FUNCIONES = [fn.fun_1, fn.fun_2, fn.fun_3, fn.fun_4, fn.fun_5, fn.fun_6]
 FUNCIONES_DERIVADA = [fn.derivada_1, fn.derivada_2, fn.derivada_3, fn.derivada_4, fn.derivada_5, fn.derivada_6 ]
@@ -11,6 +9,7 @@ FUNCIONES_SEGUNDA_DERIVADA = [fn.segunda_derivada_1, fn.segunda_derivada_2, fn.s
 PUNTO_FIJO = [fn.puntofijo_1, fn.puntofijo_2, fn.puntofijo_3, fn.puntofijo_4, fn.puntofijo_5, fn.puntofijo_6]
 INTERVALOS = [[fn.a_1, fn.b_1], [fn.a_2, fn.b_2], [fn.a_3, fn.b_3],[fn.a_4, fn.b_4], [fn.a_5, fn.b_5], [fn.a_6, fn.b_6]]
 X0 = [fn.x0_1, fn.x0_2, fn.x0_3, fn.x0_4, fn.x0_5, fn.x0_6]
+X1 = [fn.x1_1, fn.x1_2, fn.x1_3, fn.x1_4, fn.x1_5, fn.x1_6]
 DIRECCION = Path("src/data")
 DIRECCION.mkdir(parents= True, exist_ok= True)
 
@@ -66,6 +65,7 @@ def crear_archivos_per_funcion():
         f_s = FUNCIONES_SEGUNDA_DERIVADA[i]
         intervalo = INTERVALOS[i]
         x0 = X0[i]
+        x1 = X1[i]
 
         # Biseccion
         dic_biseccion = ite.biseccion(f, intervalo, tol=ite.TOLERANCIA, max_iter=ite.MAX_ITER)
@@ -82,7 +82,10 @@ def crear_archivos_per_funcion():
         #Newton Raphton Modificado
         dic_newton_raphton_mod = ite.newton_raphson_modificado(f, f_p, f_s, x0, ite.TOLERANCIA, ite.MAX_ITER)
 
-        lista_diccionarios.append([dic_biseccion, dic_falsa_posicion, dic_punto_fijo, dic_newton_raphton, dic_newton_raphton_mod])
+        #Secante
+        dic_secante = ite.secante(f, x0, x1, ite.TOLERANCIA, ite.MAX_ITER)
+
+        lista_diccionarios.append([dic_biseccion, dic_falsa_posicion, dic_punto_fijo, dic_newton_raphton, dic_newton_raphton_mod, dic_secante])
     generar_csv_resumen(lista_diccionarios)
     generar_csv_funciones(lista_diccionarios)
     genera_curva_funciones()
