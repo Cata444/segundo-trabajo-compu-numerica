@@ -150,16 +150,21 @@ Punto fijo fue el más irregular: le fue bien en la polinómica, pero muy mal en
 
 ### 2. ¿Qué orden de convergencia tiene cada método y cómo se refleja en el gráfico |error| vs iteración?
 
-Bisección, falsa posición y punto fijo son **lineales**,
-La secante es **superlineal**,
-Newton y Newton modificado son **cuadráticos** y
-en punto fijo, la pendiente depende de |g'(raíz)|
+Bisección, falsa posición y punto fijo son **lineales**: en los gráficos como la escala logaritmica se ven como líneas que bajan de forma pareja, con pendiente constante. Bisección además baja como en un zig-zag, porque a veces el punto medio queda más lejos de la raíz que el anterior.
+
+La secante es **superlineal** porque la línea baja cada vez más rápido.
+
+Newton y Newton modificado son **cuadráticos**: caen casi en vertical en las últimas iteraciones.
+
+En punto fijo, la pendiente depende de |g'(raíz)|: mientras más cerca de 1, más plana la línea. Con 0.14 que fue la polinomica tardó 7 iteraciones, con 0.67 que fue trigonometrica fueron 33 y con 0.96 que fue la mixta directamente no llegó.
  
 | Polinómica | Logarítmica | Exponencial |
 |---|---|---|
 | ![](src/assets/convergencia_Polinomica.png) | ![](src/assets/convergencia_Logaritmica.png) | ![](src/assets/convergencia_Exponencial.png) |
 | **Trigonométrica** | **Mixta** | **Raíz doble** |
 | ![](src/assets/convergencia_Trigonometrica.png) | ![](src/assets/convergencia_Mixta.png) | ![](src/assets/convergencia_Raiz_doble.png) |
+
+
 
 
 ### 3. ¿Qué métodos requieren un intervalo con cambio de signo y cuáles no?
