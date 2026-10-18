@@ -38,9 +38,9 @@ segundo-trabajo-compu-numerica/
     ├── scripts/
     │   ├── funciones.py        # 6 funciones, derivadas, g(x), intervalos, x0/x1, tolerancia
     │   ├── iteraciones.py      # 6 métodos: bisección, falsa posición, punto fijo, secante, Newton-Raphson y Newton-Raphson modificado
-    │   ├── main.py # archivo de ejecucion principal                    
-    │   ├── datos.py            
-    │   └── graficos.py         
+    │   ├── main.py             # archivo de ejecucion principal                    
+    │   ├── datos.py            # genera los CSV de cada función y el resumen de convergencia            
+    │   └── graficos.py         # genera los gráficos de funciones, convergencia y resumen
     ├── data/
     │   ├── funcion_<nombre>.csv
     │   ├── iteraciones_<nombre>.csv
@@ -60,8 +60,8 @@ segundo-trabajo-compu-numerica/
 Requisito: tener Docker Desktop instalado y abierto.
 
 ```
-docker build -t busqueda-raices .                          # construye la imagen (solo la primera vez)
-docker run --rm -v "${PWD}/src:/app/src" busqueda-raices   # ejecuta datos.py y graficos.py
+docker build -t busqueda-raices -f Docker/Dockerfile .     # construye la imagen (solo la primera vez)
+docker run --rm -v "${PWD}/src:/app/src" busqueda-raices   # ejecuta main.py
 ```
 
 Los CSV se generan en `src/data/` y los gráficos en `src/assets/`.
@@ -71,10 +71,7 @@ Los CSV se generan en `src/data/` y los gráficos en `src/assets/`.
 ```
 pip install -r requirements.txt       # numpy, matplotlib
 
-python src/scripts/funciones.py       # verifica el cambio de signo de cada función (Bolzano)
-python src/scripts/iteraciones.py     # prueba los 6 métodos sobre las funciones
-python src/scripts/datos.py           # genera los CSV de cada función y el resumen de convergencia
-python src/scripts/graficos.py        # genera los gráficos de funciones, convergencia y resumen
+python src/scripts/main.py            # Verifica si los metodos tienen raices (Bolzano y Tangencia) genera los CSV y los Graficos.       
 ```
 
 Todos los cálculos usan `numpy`. Las derivadas f'(x) y f''(x) se calcularon a mano y están en `src/scripts/funciones.py`. La tolerancia (`1e-6`) y el tope de iteraciones (`100`) se definen en `TOLERANCIA` y `MAX_ITER`.
