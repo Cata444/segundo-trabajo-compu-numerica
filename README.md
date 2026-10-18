@@ -80,17 +80,16 @@ Todos los cálculos usan `numpy`. Las derivadas f'(x) y f''(x) se calcularon a m
 
 | Pregunta | Resultado clave |
 |---|---|
-| **Método más rápido** | Raíces simples: Newton y Newton modificado (`[...]` iteraciones) > secante (`[...]`) > punto fijo / falsa posición > bisección (`[...]`) |
-| **Orden de convergencia** | Bisección, falsa posición y punto fijo: lineal · Secante: superlineal (≈ 1.618) · Newton: cuadrático |
-| **Cambio de signo** | Bisección y falsa posición lo exigen; punto fijo, secante, Newton y Newton modificado no |
-| **Raíz doble (x − 2)²** | `f(a)·f(b) = 1 > 0` → bisección y falsa posición no aplican · Newton: `[...]` iter (lineal) · Newton modificado: `[...]` iter → **el mejor** |
-| **Sensibilidad al inicio** | Intervalo `[1, 2]`: `[...]` iter vs `[0, 10]`: `[...]` iter · x₀ cercano: `[...]` iter vs x₀ lejano: `[...]` iter |
-| **Recomendación** | Robustez → bisección · Velocidad con derivada → Newton · Sin derivada → secante · Raíz múltiple → Newton modificado |
-
+| Método más rápido | Raíces simples: Newton y Newton modificado (2–3 iteraciones) > secante (3–4) > falsa posición (4–12) > bisección (19–20) |
+| Orden de convergencia | Bisección, falsa posición y punto fijo: lineal · Secante: superlineal (≈ 1.618) · Newton: cuadrático |
+| Cambio de signo | Bisección y falsa posición lo exigen; punto fijo, secante, Newton y Newton modificado no |
+| Raíz doble (x − 2)² | f(a)·f(b) = 1 > 0 → bisección y falsa posición no aplican · Newton: 10 iteraciones (lineal) · Newton modificado: 1 iteración → el mejor |
+| Condiciones iniciales | Bisección depende solo del ancho del intervalo (20 iteraciones para ancho 1) · Newton tardó 2 con x₀ cerca de la raíz y 10 en la raíz doble · Punto fijo depende de |g'(raíz)|: 7 con 0.14, 33 con 0.67, no converge con 0.96 |
+| Recomendación | Robustez → bisección · Velocidad con derivada → Newton · Sin derivada → secante · Raíz múltiple → Newton modificado |
 Ver detalle, gráficos y tablas en `informe.md` y `src/data/`.
 
 ## Gráficos
 
-- `src/assets/funcion_1.png` … `funcion_6.png`: cada función con su raíz marcada (en la raíz doble, la tangencia con el eje x).
-- `src/assets/convergencia_1.png` … `convergencia_6.png`: |error| vs iteración en escala log, comparando los 6 métodos en cada función.
-- `src/assets/resumen_iteraciones.png`: barras con las iteraciones de cada método en cada función.
+- `src/assets/Curva_<nombre>.png` (6): cada función con su raíz marcada (en la raíz doble, la tangencia con el eje x).
+- `src/assets/convergencia_<nombre>.png` (6): |error| vs iteración en escala log, comparando los 6 métodos en cada función.
+- `src/assets/resumen_iteraciones.png` : barras con las iteraciones de cada método en cada función.
