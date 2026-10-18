@@ -209,12 +209,12 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 
 ### 6. ¿Qué método recomiendan según el tipo de función (velocidad vs robustez)?
 
-| tipo de funcion que tenemos que verificar | metodo que recomendamos |
-|---|---|
-| Hay cambio de signo | Bisección |
-| Se tiene la derivada y un buen x₀ | Newton |
-| No se tiene información de la derivada | Secante |
-| Raíz múltiple (la curva toca el eje) | Newton modificado |
+| tipo de funcion que tenemos que verificar | metodo que recomendamos | por qué |
+|---|---| ---|
+| Hay cambio de signo | Bisección | es lenta, pero nunca falla |
+| Se tiene la derivada y un buen x₀ | Newton | es el mas rapido de 2 a 3 iteraciones|
+| No se tiene información de la derivada | Secante | casi tan rapida como newton |
+| Raíz múltiple | Newton modificado | el único que no se puso lento |
 
 
 
