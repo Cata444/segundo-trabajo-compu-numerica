@@ -1,5 +1,7 @@
 # La raíz que se esconde — Comparación de métodos de búsqueda de raíces
 
+Laboratorio evaluado Unidad nro 2 computación númerica.
+
 ## Objetivo
 
 Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de distinta naturaleza, y mostrar con datos y gráficos en qué se diferencian al converger:
@@ -22,10 +24,8 @@ Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de 
 | 5 | Trigonométrica | cos(x) − x | [0, 1] | 0.5 | 1.0 | −0.4597 | Sí |
 | 6 | Mixta | √x − cos(x) | [0.1, 1] | 0.5 | 1.0 | −0.3120 | Sí |
 
-- En las funciones 1, 3, 4, 5 y 6 se cumple f(a) x f(b) < 0, por lo que, por el **teorema de Bolzano**, existe al menos una raíz en [a, b].
+- En las funciones 1, 3, 4, 5 y 6 se cumple f(a)·f(b) < 0, por lo que, por el **teorema de Bolzano**, existe al menos una raíz en [a, b].
 - En la función 2 se cumple `f(2) = 0` y `f'(2) = 0`: la curva **toca** el eje x sin cruzarlo, por lo que no hay cambio de signo aunque sí hay raíz.
-
-Gráficos de cada función con su raíz marcada:
 
 
 ### Funciones de punto fijo g(x)
@@ -150,16 +150,21 @@ Punto fijo fue el más irregular: le fue bien en la polinómica, pero muy mal en
 
 ### 2. ¿Qué orden de convergencia tiene cada método y cómo se refleja en el gráfico |error| vs iteración?
 
-Bisección, falsa posición y punto fijo son **lineales**,
-La secante es **superlineal**,
-Newton y Newton modificado son **cuadráticos** y
-en punto fijo, la pendiente depende de |g'(raíz)|
+Bisección, falsa posición y punto fijo son **lineales**: en los gráficos como la escala logaritmica se ven como líneas que bajan de forma pareja, con pendiente constante. Bisección además baja como en un zig-zag, porque a veces el punto medio queda más lejos de la raíz que el anterior.
+
+La secante es **superlineal** porque la línea baja cada vez más rápido.
+
+Newton y Newton modificado son **cuadráticos**: caen casi en vertical en las últimas iteraciones.
+
+En punto fijo, la pendiente depende de |g'(raíz)|: mientras más cerca de 1, más plana la línea. Con 0.14 que fue la polinomica tardó 7 iteraciones, con 0.67 que fue trigonometrica fueron 33 y con 0.96 que fue la mixta directamente no llegó.
  
 | Polinómica | Logarítmica | Exponencial |
 |---|---|---|
 | ![](src/assets/convergencia_Polinomica.png) | ![](src/assets/convergencia_Logaritmica.png) | ![](src/assets/convergencia_Exponencial.png) |
 | **Trigonométrica** | **Mixta** | **Raíz doble** |
 | ![](src/assets/convergencia_Trigonometrica.png) | ![](src/assets/convergencia_Mixta.png) | ![](src/assets/convergencia_Raiz_doble.png) |
+
+
 
 
 ### 3. ¿Qué métodos requieren un intervalo con cambio de signo y cuáles no?
@@ -178,7 +183,7 @@ En los gráficos se ve la diferencia: las cinco primeras curvas atraviesan el ej
 
 ### 4. En la raíz doble: ¿qué métodos fallan o no aplican y cuál se comporta mejor? ¿Por qué?
 
-La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el eje y vuelve a subir. Eso es un problema para todos los métodos:
+La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el eje y vuelve a subir. Eso es un problema para casi todos los métodos:
 
 | método | que fue lo que pasó| por qué ocurrió esto |
 |---|---|---|
@@ -197,21 +202,50 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 
 **En bisección**, lo único que importa es qué tan ancho es el intervalo: mientras más ancho, más veces hay que partirlo por la mitad. Pero el efecto es pequeño, porque cada iteración lo va reduciendo a la mitad. Se puede calcular de antemano con su formula `n = ⌈log₂((b − a)/tol)⌉`: para [1, 2] da 20 iteraciones, igual que nuestros resultados. Si hay cambio de signo, siempre encuentra la raíz.
 
+| Función | Intervalo | Ancho | Estimado | Obtenido |
+|---|---|---|---|---|
+| Polinómica | [1, 2] | 1 | 20 | 20 |
+| Logarítmica | [2, 3] | 1 | 20 | 19 |
+| Exponencial | [0, 1] | 1 | 20 | 20 |
+| Trigonométrica | [0, 1] | 1 | 20 | 20 |
+| Mixta | [0.1, 1] | 0.9 | 20 | 20 |
+
 **En Newton y secante** lo mas importante praacticamente es desde dónde se parte. Si el punto inicial está cerca de la raíz, llegan en 2 o 3 iteraciones. Si está lejos, o en una zona donde la curva es casi plana, pueden tardar muchasimo más o incluso no llegar nunca.
 
+| Función | x₀ | Raíz | Distancia a la raíz | Iteraciones de Newton |
+|---|---|---|---|---|
+| Polinómica | 1.5 | 1.5214 | 0.02 | 2 |
+| Exponencial | 0.5 | 0.5671 | 0.07 | 2 |
+| Mixta | 0.5 | 0.6417 | 0.14 | 2 |
+| Trigonométrica | 0.5 | 0.7391 | 0.24 | 3 |
+| Logarítmica | 2.5 | 2.9263 | 0.43 | 3 |
+| Raíz doble | 1.2 | 2 | 0.80 | 10 |
+
 **En punto fijo**, importa más qué g(x) se elige que el punto de partida: con una buena g llega rápido desde casi cualquier lado, y con una mala g no llega, es relativo.
+
+| Función | x₀ | \|g'(raíz)\| | Iteraciones de punto fijo |
+|---|---|---|---|
+| Polinómica | 1.5 | 0.14 | 7 |
+| Logarítmica | 2.5 | 0.34 | 13 |
+| Exponencial | 0.5 | 0.57 | 21 |
+| Trigonométrica | 0.5 | 0.67 | 33 |
+| Mixta | 0.5 | 0.96 | 100 (no llegó) |
 
 
 ### 6. ¿Qué método recomiendan según el tipo de función (velocidad vs robustez)?
 
-| tipo de funcion que tenemos que verificar | metodo que recomendamos |
-|---|---|
-| Hay cambio de signo | Bisección |
-| Se tiene la derivada y un buen x₀ | Newton |
-| No se tiene información de la derivada | Secante |
-| Raíz múltiple (la curva toca el eje) | Newton modificado |
-
+| tipo de funcion que tenemos que verificar | metodo que recomendamos | por qué |
+|---|---| ---|
+| Hay cambio de signo | Bisección | es lenta, pero nunca falla |
+| Se tiene la derivada y un buen x₀ | Newton | es el mas rapido de 2 a 3 iteraciones|
+| No se tiene información de la derivada | Secante | casi tan rapida como newton |
+| Raíz múltiple | Newton modificado | el único que no se puso lento |
 
 
 ## Conclusión
 
+**¿Qué método elegiríamos para cada tipo de función?** Depende de lo que queramos entre velocidad y robustez. Newton fue el más rápido en todas las raíces simples logrando de 2 a 3 iteraciones, pero claramente necesita la derivada y un buen punto de partida. Bisección fue la más lenta porque tenia entre 19 a 20 iteraciones, pero nunca falló cuando hubo cambio de signo. La secante quedó en un buen punto intermedio: 3 o 4 iteraciones sin necesitar alguna derivada. Para una raíz doble, el único que se comportó bien fue Newton modificado.
+
+**¿Qué ocurrió en la raíz doble?** La función (x − 2)² tiene raíz en x = 2, pero nunca cambia de signo, así que bisección y falsa posición no se pudieron usar directamente. Esto muestra que "tener raíz" no es lo mismo que "cambiar de signo": el teorema de Bolzano nos dice que "garantiza una raíz si hay cambio de signo, pero puede haber raíces sin él". Además, Newton y secante se volvieron lentos osea de 10 a 13 iteraciones y quedaron a unas milésimas de la raíz, mientras que Newton modificado llegó exacto en 1 iteración coronandose.
+
+**¿Cómo cambió el número de iteraciones al mover el intervalo o el punto inicial?** En bisección, el número de iteraciones depende solo del ancho del intervalo, así que un intervalo más ancho agrega pocas iteraciones. En los métodos abiertos, el punto de partida importa mucho más: cerca de la raíz bastan 2 o 3 iteraciones, pero lejos de ella o en una zona plana de la curva el método puede tardar mucho más o no converger.
