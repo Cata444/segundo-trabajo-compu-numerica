@@ -11,7 +11,7 @@ Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de 
 - Funciones: polinómica, logarítmica, exponencial, trigonométrica, mixta y una con **raíz doble** que toca el eje x sin cruzarlo.
 - Se registra para cada método: iteraciones, raíz encontrada y error.
 
-> **Nota sobre el criterio de parada:** se usa `|f(x)| < tol` o `|x − x₋₁| < tol`, con `tol = 1e-6` y un tope de `100` iteraciones (`TOLERANCIA` y `MAX_ITER` en el código).
+> **Nota sobre el criterio de parada:** se usa `|f(x)| < tol` o `|x − x₋₁| < tol`, con `tol = 1e-6` y un tope de `100` iteraciones (`TOLERANCIA` y `MAX_ITER` en el código). Bisección, falsa posición y punto fijo usan ambos criterios; secante, Newton y Newton modificado usan solo `|f(x)| < tol` dentro de un ciclo `while`, que es uno de los dos criterios que estaban aceptados.
 
 ## Ambiente controlado
 
@@ -25,7 +25,8 @@ Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de 
 | 6 | Mixta | √x − cos(x) | [0.1, 1] | 0.5 | 1.0 | −0.3120 | Sí |
 
 - En las funciones 1, 3, 4, 5 y 6 se cumple f(a)·f(b) < 0, por lo que, por el **teorema de Bolzano**, existe al menos una raíz en [a, b].
-- En la función 2 se cumple `f(2) = 0` y `f'(2) = 0`: la curva **toca** el eje x sin cruzarlo, por lo que no hay cambio de signo aunque sí hay raíz.
+- En la función 2 se cumple `f(2) = 0`, `f'(2) = 0` y `f''(2) = 2 ≠ 0`: la curva **toca** el eje x sin cruzarlo, por lo que no hay cambio de signo aunque sí hay raíz. Aunque f no cambia de signo, su derivada sí: f'(1)·f'(3) = (−2)(2) = −4 < 0, por lo que f' se anula en x = 2, donde la curva tiene tangente horizontal justo sobre el eje.
+- Los gráficos de cada función se encuentran en la pregunta 3.
 
 
 ### Funciones de punto fijo g(x)
@@ -55,6 +56,12 @@ Para punto fijo se despeja x de f(x) = 0 y se itera x = g(x). Converge si |g'(x)
 Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/funciones.py"
 
 ## Resultados completos
+
+Datos de `src/data/resumen_convergencias.csv` e `iteraciones_<función>.csv`.
+
+primer paso:  **|f(raíz)|:** valor de la función en la raíz encontrada.
+ultimo paso: |xₙ − xₙ₋₁|, la columna "Error" de los CSV.
+- **Error real:** |x − raíz exacta|, comparando con una raíz de referencia calculada con tolerancia 1e-15 (en la raíz doble, x = 2).
 
 ### Función 1 — Polinómica: x³ − x − 2, intervalo [1, 2], x₀ = 1.5
  
