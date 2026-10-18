@@ -25,7 +25,7 @@ def grafico_converguencia_per_metodos():
 
         hubo_ceros = False # Esta variable me entrega si el error fue cero y de ser asi, entonces se activa una nota especifica
         # debido a que ya que se modela por el eje de un logaritmo, y log(0) tiende al infinito, basicamente no se veria el punto.
-        raiz = 2.0 if nombre == "Raiz doble" else ite.newton_raphson_modificado(dt.FUNCIONES[i], dt.FUNCIONES_DERIVADA[i], dt.FUNCIONES_SEGUNDA_DERIVADA[i], dt.X0[i])["raiz"]
+        raiz = 2.0 if nombre == "Raiz doble" else ite.newton_raphson_modificado(dt.FUNCIONES[i], dt.FUNCIONES_DERIVADA[i], dt.FUNCIONES_SEGUNDA_DERIVADA[i], dt.X0[i], tol = 1e-15, max_iter = 400)["raiz"]
         for metodo in dict.fromkeys(metodos):
             m = metodos == metodo
             error = np.abs(x[m] - raiz)
@@ -59,7 +59,7 @@ def grafico_curva_funciones():
 
         # Calculamos la raiz aproximada para colocar el punto aproximado donde se encuentra con el eje x para ello usaremos
         # newton raphton mejorado.
-        raiz_aproximada = ite.newton_raphson_modificado(dt.FUNCIONES[i], dt.FUNCIONES_DERIVADA[i], dt.FUNCIONES_SEGUNDA_DERIVADA[i], dt.X0[i])
+        raiz_aproximada = ite.newton_raphson_modificado(dt.FUNCIONES[i], dt.FUNCIONES_DERIVADA[i], dt.FUNCIONES_SEGUNDA_DERIVADA[i], dt.X0[i], tol = 1e-15, max_iter = 400)
         
         # De los datos sacados al ser solo dos columnas las separaremos en x e y.
         x = datos[:, 0]
@@ -68,7 +68,7 @@ def grafico_curva_funciones():
         # Primero dibujaremos la funcion gracias a los valores del csv.
         plt.plot(x, y, color="blue", linewidth=0.8, label = f"Funcion {TITULOS[i]}")
         # luego dibujamos el punto donde se encuentra la raiz aproximada.
-        plt.plot(raiz_aproximada["raiz"], 0, 'ro', label = f"Raiz Aproximada: {raiz_aproximada["raiz"]}")
+        plt.plot(raiz_aproximada["raiz"], 0, 'ro', label = f"Raiz Aproximada: {raiz_aproximada["raiz"]:.6f}")
 
         #Dibujamos de manera mas clara el eje x e y.
         plt.axhline(0, color="black", linewidth=0.8) 

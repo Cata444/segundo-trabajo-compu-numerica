@@ -268,11 +268,11 @@ def bolzano(f: Callable, a, b):
 def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
     """Tangencia a la al eje, Con esto podemos determinar la convergencia de la raiz doble."""
     # f(x) = 0
-    f_cero  = True if (int(f(x)) == 0 or int(f(x)) < 0) else False
+    f_cero  = np.isclose(f(x), 0, atol=TOLERANCIA)
     # f'(x) = 0
-    f1_cero = True if (int(f_1(x)) == 0 or int(f_1(x)) < 0) else False
+    f1_cero = np.isclose(f_1(x), 0, atol=TOLERANCIA)
     # f''(x) ≠ 0
-    f2_cero = True if (int(f_2(x)) == 0) else False
+    f2_cero = np.isclose(f_2(x), 0, atol=TOLERANCIA)
     # f(x) = 0 ^ f'(x) = 0 ^ f''(x) ≠ 0 -> True, si no False
     return bool(f_cero and f1_cero and not f2_cero)
 
