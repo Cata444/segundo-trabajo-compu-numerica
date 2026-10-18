@@ -137,6 +137,15 @@ Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/func
 
 ### 1. ¿Qué método convergió en menos iteraciones en cada función? ¿Por qué?
 
+![Resumen de iteraciones](src/assets/resumen_iteraciones.png)
+
+En todas las funciones con raíz simple, los más rápidos fueron **Newton-Raphson y Newton-Raphson modificado**, que necesitaron solo 2 o 3 iteraciones, una rapidez total impresionante. En la logarítmica, la secante los iba alcanzando de a poco, finalmente lo alcanzó con 3. En la raíz doble ganó claramente **Newton modificado**, que llegó a la raíz en una sola iteración, mientras que Newton normal necesitó 10.
+
+La razón está en cuánta información usa cada método para dar el siguiente paso. Newton usa la derivada, o sea, la pendiente de la curva en el punto donde está, y con eso traza la tangente y salta casi directo a la raíz. Por eso su convergencia es cuadrática: en cada iteración la cantidad de cifras correctas aproximadamente se duplica. La secante hace algo ligeramente parecido, pero aproxima la pendiente con una recta entre dos puntos, así que es un poco más lentita , aunque tiene la ventaja de no necesitar la derivada.
+
+En el otro extremo, bisección fue la más lenta, con 19 o 20 iteraciones en todas las funciones. No es porque no funcione por ejemplo, sino porque no mira la forma de la curva: solo parte el intervalo a la mitad una y otra vez. Por lo mismo, su número de iteraciones casi no cambia entre funciones y se puede predecir de antemano.
+
+Punto fijo fue el más irregular: le fue bien en la polinómica, pero muy mal en la trigonométrica y no alcanzó a converger en la mixta. Su velocidad depende de qué tan buena sea la g(x) elegida, y no solo del método.
 
 
 ### 2. ¿Qué orden de convergencia tiene cada método y cómo se refleja en el gráfico |error| vs iteración?
