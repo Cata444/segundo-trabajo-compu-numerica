@@ -155,6 +155,17 @@ En punto fijo, la pendiente depende de |g'(raíz)|: con 0.14 (polinómica) tard�
 
 ### 3. ¿Qué métodos requieren un intervalo con cambio de signo y cuáles no?
 
+Bisección y falsa posición **sí necesitan** que la función cambie de signo en el intervalo, es decir, que en un extremo sea negativa y en el otro positiva (`f(a)·f(b) < 0`). Así saben que la raíz está "encerrada" entre a y b. Por eso no se pudieron usar en la raíz doble.
+
+Punto fijo, secante, Newton y Newton modificado **no lo necesitan**, porque parten desde uno o dos puntos iniciales en vez de un intervalo. Lo malo claramente es que no siempre llegan a la raíz: punto fijo no lo logró en la raíz doble ni en la mixta.
+
+| Polinómica | Logarítmica | Exponencial |
+|---|---|---|
+| ![](src/assets/Curva_Polinomica.png) | ![](src/assets/Curva_Logaritmica.png) | ![](src/assets/Curva_Exponencial.png) |
+| **Trigonométrica** | **Mixta** | **Raíz doble** |
+| ![](src/assets/Curva_Trigonometrica.png) | ![](src/assets/Curva_Mixta.png) | ![](src/assets/Curva_Raiz_doble.png) |
+
+En los gráficos se ve la diferencia: las cinco primeras curvas atraviesan el eje x, pasando de un lado al otro. La raíz doble, en cambio, solo toca el eje en x = 2 y vuelve a subir, sin pasar nunca por debajo.
 
 ### 4. En la raíz doble: ¿qué métodos fallan o no aplican y cuál se comporta mejor? ¿Por qué?
 
