@@ -137,10 +137,20 @@ Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/func
 
 ### 1. ¿Qué método convergió en menos iteraciones en cada función? ¿Por qué?
 
- 
+
 
 ### 2. ¿Qué orden de convergencia tiene cada método y cómo se refleja en el gráfico |error| vs iteración?
 
+Bisección, falsa posición y punto fijo son **lineales**
+La secante es **superlineal**
+Newton y Newton modificado son **cuadráticos**
+En punto fijo, la pendiente depende de |g'(raíz)|: con 0.14 (polinómica) tardó 7 iteraciones, con 0.67 (trigonométrica) tardó 33 y con 0.96 (mixta) no convergió.
+ 
+| Polinómica | Logarítmica | Exponencial |
+|---|---|---|
+| ![](src/assets/convergencia_Polinomica.png) | ![](src/assets/convergencia_Logaritmica.png) | ![](src/assets/convergencia_Exponencial.png) |
+| **Trigonométrica** | **Mixta** | **Raíz doble** |
+| ![](src/assets/convergencia_Trigonometrica.png) | ![](src/assets/convergencia_Mixta.png) | ![](src/assets/convergencia_Raiz_doble.png) |
 
 
 ### 3. ¿Qué métodos requieren un intervalo con cambio de signo y cuáles no?
