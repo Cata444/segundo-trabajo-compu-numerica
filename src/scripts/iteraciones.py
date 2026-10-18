@@ -1,19 +1,18 @@
+#Importaciones de librerias
 import numpy as np
-import funciones as fn
 from typing import Callable
+
 #Zonas de Variables Globales.
 TOLERANCIA = 1e-6
 MAX_ITER = 100
 
-# Zona de Metodos
-
-## Metodos Cerrados
+#------------------------------------------------Metodos Cerrados-----------------------------------------------------------------#
 
 def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que recrea el metodo cerrado de biseccion."""
     a = intervalo[0]
     b = intervalo[1]
     if not(bolzano(f, a, b)):
-        print("No hay un cambio de signo en el intervalo [a, b], no se puede aplicar el metodo de biseccion.")
         return {"metodo": "Biseccion",
                 "aplicable": False, 
                 "convergencia": False, 
@@ -72,10 +71,10 @@ def biseccion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
             "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}
  
 def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que implementa el metodo cerrado de falsa posicion."""
     a = intervalo[0]
     b = intervalo[1]
     if not(bolzano(f, a, b)):
-        print("No hay un cambio de signo en el intervalo [a, b], no se puede aplicar el metodo de falsa posicion.")
         return {"metodo": "Falsa Posicion",
                 "aplicable": False, 
                 "convergencia": False, 
@@ -132,8 +131,10 @@ def falsa_posicion(f: Callable, intervalo: list, tol=TOLERANCIA, max_iter=MAX_IT
             "columnas": ["iteracion", "a", "b", "f_a", "p_n", "f_p", "err_abs", "err_rel_pct"], 
             "motivo": f"Se alcanzo el maximo de iteraciones sin encontrar una raiz con una tolerancia de {tol}"}
 
-## Metodos Abiertos
+#------------------------------------------------Metodos Abiertos-----------------------------------------------------------------#
+
 def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que implementa el metodo abierto de punto fijo."""
     lista_iteraciones = []
     p_previo = p0
     f_pn = 0
@@ -181,6 +182,7 @@ def punto_fijo(g: Callable, p0, f: Callable = None, tol=TOLERANCIA, max_iter=MAX
 
 
 def newton_raphson(funcion, mi_derivada, punto_inicio, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que implementa el metodo abierto de newton raphson."""
     x = punto_inicio
     lista_iteraciones = []
     i = 0
@@ -204,6 +206,7 @@ def newton_raphson(funcion, mi_derivada, punto_inicio, tol=TOLERANCIA, max_iter=
 
 
 def newton_raphson_modificado(funcion, mi_derivada, mi_segunda_derivada, punto_inicio, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que implementa el metodo abierto de newton raphston mejorado."""
     x = punto_inicio
     lista_iteraciones = []
     i = 0
@@ -228,6 +231,7 @@ def newton_raphson_modificado(funcion, mi_derivada, mi_segunda_derivada, punto_i
             "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
 
 def secante(funcion, punto_inicio, punto_dos, tol=TOLERANCIA, max_iter=MAX_ITER):
+    """Funcion que implementa el metodo abierto de la secante."""
     x_antes = punto_inicio
     x = punto_dos
     lista_iteraciones = []
@@ -254,15 +258,15 @@ def secante(funcion, punto_inicio, punto_dos, tol=TOLERANCIA, max_iter=MAX_ITER)
             "motivo": "Se encontro la raiz" if encontramos_raiz else "Se alcanzo el maximo de iteraciones"}
     
 
-## Teorema de Bolzano para saber si hay una raiz en el intervalo [a, b]
 def bolzano(f: Callable, a, b):
+    """Teorema de Bolzano para saber si hay una raiz en el intervalo [a, b]."""
     if f(a) * f(b) < 0:
         return True
     else:
         return False
 
-## Tangencia a la al eje, Con esto podemos determinar la convergencia de la raiz doble.
 def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
+    """Tangencia a la al eje, Con esto podemos determinar la convergencia de la raiz doble."""
     # f(x) = 0
     f_cero  = np.isclose(f(x), 0, atol=TOLERANCIA)
     # f'(x) = 0
@@ -272,8 +276,8 @@ def tangencia_raiz_doble(f: Callable, f_1: Callable, f_2: Callable, x):
     # f(x) = 0 ^ f'(x) = 0 ^ f''(x) ≠ 0 -> True, si no False
     return bool(f_cero and f1_cero and not f2_cero)
 
-## Estimador de iteraciones por tolerancia para el metodo de biseccion
 def estimador_iteraciones(tol, a, b):
+    """Estimador de iteraciones por tolerancia para el metodo de biseccion"""
     return np.ceil(np.log((b - a) / tol) / np.log(2))
 
 ## Errores
@@ -287,4 +291,5 @@ def error_relativo_porcentual(p_n, p_n1):
 
 if __name__ == "__main__":
     # Llamada a las funciones de iteraciones para cada función
+    # print("Te encuentras en el archivo 'iteraciones.py'.")
     pass

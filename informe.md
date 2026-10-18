@@ -217,7 +217,7 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 | Trigonométrica | [0, 1] | 1 | 20 | 20 |
 | Mixta | [0.1, 1] | 0.9 | 20 | 20 |
 
-**En Newton y secante** lo mas importante praacticamente es desde dónde se parte. Si el punto inicial está cerca de la raíz, llegan en 2 o 3 iteraciones. Si está lejos, o en una zona donde la curva es casi plana, pueden tardar muchasimo más o incluso no llegar nunca.
+**En Newton y secante** lo mas importante practicamente es desde dónde se parte. Si el punto inicial está cerca de la raíz, llegan en 2 o 3 iteraciones. Si está lejos, o en una zona donde la curva es casi plana, pueden tardar muchisimo más o incluso no llegar nunca.
 
 | Función | x₀ | Raíz | Distancia a la raíz | Iteraciones de Newton |
 |---|---|---|---|---|
