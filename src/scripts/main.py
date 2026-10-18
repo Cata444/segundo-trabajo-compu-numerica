@@ -36,7 +36,7 @@ def main():
 
         # Si la funcion es la de raiz doble usamos tangencia al eje, porque de lo contrario no convergeria por Bolzano.
         if nombre == "Raiz doble":
-            if (ite.tangencia_raiz_doble(dt.FUNCIONES[1], dt.FUNCIONES_DERIVADA[1], dt.FUNCIONES_SEGUNDA_DERIVADA[1], dt.X0[1])): 
+            if (ite.tangencia_raiz_doble(dt.FUNCIONES[1], dt.FUNCIONES_DERIVADA[1], dt.FUNCIONES_SEGUNDA_DERIVADA[1], 2.0)): 
                 converge = "Existe una raiz"     
             metodo_convergencia = "Tangencia al eje"
 
