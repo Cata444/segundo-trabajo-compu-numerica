@@ -48,7 +48,7 @@ segundo-trabajo-compu-numerica/
     │   └── resumen_convergencias.csv
     └── assets/
         ├── convergencia_<nombre>.png
-        ├── Curva_<nombre>.png.png
+        ├── Curva_<nombre>.png
         ├── ...
         └── resumen_iteraciones.png
 ```
