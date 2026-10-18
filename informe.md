@@ -1,5 +1,7 @@
 # La raíz que se esconde — Comparación de métodos de búsqueda de raíces
 
+Laboratorio evaluado Unidad nro 2 computación númerica.
+
 ## Objetivo
 
 Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de distinta naturaleza, y mostrar con datos y gráficos en qué se diferencian al converger:
@@ -22,10 +24,8 @@ Implementar y comparar seis métodos de búsqueda de raíces sobre funciones de 
 | 5 | Trigonométrica | cos(x) − x | [0, 1] | 0.5 | 1.0 | −0.4597 | Sí |
 | 6 | Mixta | √x − cos(x) | [0.1, 1] | 0.5 | 1.0 | −0.3120 | Sí |
 
-- En las funciones 1, 3, 4, 5 y 6 se cumple f(a) x f(b) < 0, por lo que, por el **teorema de Bolzano**, existe al menos una raíz en [a, b].
+- En las funciones 1, 3, 4, 5 y 6 se cumple f(a)·f(b) < 0, por lo que, por el **teorema de Bolzano**, existe al menos una raíz en [a, b].
 - En la función 2 se cumple `f(2) = 0` y `f'(2) = 0`: la curva **toca** el eje x sin cruzarlo, por lo que no hay cambio de signo aunque sí hay raíz.
-
-Gráficos de cada función con su raíz marcada:
 
 
 ### Funciones de punto fijo g(x)
@@ -183,7 +183,7 @@ En los gráficos se ve la diferencia: las cinco primeras curvas atraviesan el ej
 
 ### 4. En la raíz doble: ¿qué métodos fallan o no aplican y cuál se comporta mejor? ¿Por qué?
 
-La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el eje y vuelve a subir. Eso es un problema para todos los métodos:
+La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el eje y vuelve a subir. Eso es un problema para casi todos los métodos:
 
 | método | que fue lo que pasó| por qué ocurrió esto |
 |---|---|---|
