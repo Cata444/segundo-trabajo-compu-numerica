@@ -202,9 +202,34 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 
 **En bisección**, lo único que importa es qué tan ancho es el intervalo: mientras más ancho, más veces hay que partirlo por la mitad. Pero el efecto es pequeño, porque cada iteración lo va reduciendo a la mitad. Se puede calcular de antemano con su formula `n = ⌈log₂((b − a)/tol)⌉`: para [1, 2] da 20 iteraciones, igual que nuestros resultados. Si hay cambio de signo, siempre encuentra la raíz.
 
+| Función | Intervalo | Ancho | Estimado | Obtenido |
+|---|---|---|---|---|
+| Polinómica | [1, 2] | 1 | 20 | 20 |
+| Logarítmica | [2, 3] | 1 | 20 | 19 |
+| Exponencial | [0, 1] | 1 | 20 | 20 |
+| Trigonométrica | [0, 1] | 1 | 20 | 20 |
+| Mixta | [0.1, 1] | 0.9 | 20 | 20 |
+
 **En Newton y secante** lo mas importante praacticamente es desde dónde se parte. Si el punto inicial está cerca de la raíz, llegan en 2 o 3 iteraciones. Si está lejos, o en una zona donde la curva es casi plana, pueden tardar muchasimo más o incluso no llegar nunca.
 
+| Función | x₀ | Raíz | Distancia a la raíz | Iteraciones de Newton |
+|---|---|---|---|---|
+| Polinómica | 1.5 | 1.5214 | 0.02 | 2 |
+| Exponencial | 0.5 | 0.5671 | 0.07 | 2 |
+| Mixta | 0.5 | 0.6417 | 0.14 | 2 |
+| Trigonométrica | 0.5 | 0.7391 | 0.24 | 3 |
+| Logarítmica | 2.5 | 2.9263 | 0.43 | 3 |
+| Raíz doble | 1.2 | 2 | 0.80 | 10 |
+
 **En punto fijo**, importa más qué g(x) se elige que el punto de partida: con una buena g llega rápido desde casi cualquier lado, y con una mala g no llega, es relativo.
+
+| Función | x₀ | \|g'(raíz)\| | Iteraciones de punto fijo |
+|---|---|---|---|
+| Polinómica | 1.5 | 0.14 | 7 |
+| Logarítmica | 2.5 | 0.34 | 13 |
+| Exponencial | 0.5 | 0.57 | 21 |
+| Trigonométrica | 0.5 | 0.67 | 33 |
+| Mixta | 0.5 | 0.96 | 100 (no llegó) |
 
 
 ### 6. ¿Qué método recomiendan según el tipo de función (velocidad vs robustez)?
