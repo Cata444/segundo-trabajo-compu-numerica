@@ -179,6 +179,10 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 | Secante | Llegó, pero lento tambien con 13 iteraciones | Le pasa lo mismo que a Newton |
 | **Newton modificado** | **Llegó exacto en 1 iteración** | Usa también la segunda derivada, que es como que le avisara que la curva es plana y corrige el paso |
 
+| Curva | Convergencia |
+|---|---|
+| ![](src/assets/Curva_Raiz_doble.png) | ![](src/assets/convergencia_Raiz_doble.png) |
+
 
 ### 5. ¿Cómo influyen el intervalo inicial y la estimación inicial en las iteraciones y en la convergencia?
 
