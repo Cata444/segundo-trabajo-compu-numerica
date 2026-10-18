@@ -59,9 +59,9 @@ Las derivadas f'(x) y f''(x) los calculamos a mano y están en "src/scripts/func
 
 Datos de `src/data/resumen_convergencias.csv` e `iteraciones_<función>.csv`.
 
-primer paso:  **|f(raíz)|:** valor de la función en la raíz encontrada.
-ultimo paso: |xₙ − xₙ₋₁|, la columna "Error" de los CSV.
-- **Error real:** |x − raíz exacta|, comparando con una raíz de referencia calculada con tolerancia 1e-15 (en la raíz doble, x = 2).
+**|f(raíz)|:** valor de la función en la raíz encontrada.
+**ultimo paso**: |xₙ − xₙ₋₁|, la columna "Error" de los CSV.
+- **Error real:** |x − raíz exacta|, comparando con una raíz de referencia calculada con tolerancia 1e-15.
 
 ### Función 1 — Polinómica: x³ − x − 2, intervalo [1, 2], x₀ = 1.5
  
