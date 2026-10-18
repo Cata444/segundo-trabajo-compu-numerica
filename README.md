@@ -38,17 +38,19 @@ segundo-trabajo-compu-numerica/
     ├── scripts/
     │   ├── funciones.py        # 6 funciones, derivadas, g(x), intervalos, x0/x1, tolerancia
     │   ├── iteraciones.py      # 6 métodos: bisección, falsa posición, punto fijo, secante, Newton-Raphson y Newton-Raphson modificado
-    │   │                       
+    │   ├── main.py # archivo de ejecucion principal                    
     │   ├── datos.py            
     │   └── graficos.py         
     ├── data/
-    │   ├── 
-    │   ├── 
-    │   └──    #lo que deberia salir
+    │   ├── funcion_{nombre de funcion}.csv
+    │   ├── iteraciones_{nombre de funcion.csv
+    │   ├── ...
+    │   └── resumen_convergencias.csv
     └── assets/
-        ├── 
-        ├── 
-        └── 
+        ├── convergencia_{nombre de funcion}.png
+        ├── Curva_{nombre de funcion}.png
+        ├── ...
+        └── resumen_iteraciones.png
 ```
 
 ## Instalación y ejecución
