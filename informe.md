@@ -217,6 +217,10 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 | Raíz múltiple | Newton modificado | el único que no se puso lento |
 
 
-
 ## Conclusión
 
+**¿Qué método elegiríamos para cada tipo de función?** Depende de lo que queramos entre velocidad y robustez. Newton fue el más rápido en todas las raíces simples logrando de 2 a 3 iteraciones, pero claramente necesita la derivada y un buen punto de partida. Bisección fue la más lenta porque tenia entre 19 a 20 iteraciones, pero nunca falló cuando hubo cambio de signo. La secante quedó en un buen punto intermedio: 3 o 4 iteraciones sin necesitar alguna derivada. Para una raíz doble, el único que se comportó bien fue Newton modificado.
+
+**¿Qué ocurrió en la raíz doble?** La función (x − 2)² tiene raíz en x = 2, pero nunca cambia de signo, así que bisección y falsa posición no se pudieron usar directamente. Esto muestra que "tener raíz" no es lo mismo que "cambiar de signo": el teorema de Bolzano nos dice que "garantiza una raíz si hay cambio de signo, pero puede haber raíces sin él". Además, Newton y secante se volvieron lentos osea de 10 a 13 iteraciones y quedaron a unas milésimas de la raíz, mientras que Newton modificado llegó exacto en 1 iteración coronandose.
+
+**¿Cómo cambió el número de iteraciones al mover el intervalo o el punto inicial?** En bisección, el número de iteraciones depende solo del ancho del intervalo, así que un intervalo más ancho agrega pocas iteraciones. En los métodos abiertos, el punto de partida importa mucho más: cerca de la raíz bastan 2 o 3 iteraciones, pero lejos de ella o en una zona plana de la curva el método puede tardar mucho más o no converger.
