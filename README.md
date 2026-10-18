@@ -42,13 +42,13 @@ segundo-trabajo-compu-numerica/
     │   ├── datos.py            
     │   └── graficos.py         
     ├── data/
-    │   ├── funcion_{nombre de funcion}.csv
-    │   ├── iteraciones_{nombre de funcion.csv
+    │   ├── funcion_<nombre>.csv
+    │   ├── iteraciones_<nombre>.csv
     │   ├── ...
     │   └── resumen_convergencias.csv
     └── assets/
-        ├── convergencia_{nombre de funcion}.png
-        ├── Curva_{nombre de funcion}.png
+        ├── convergencia_<nombre>.png
+        ├── Curva_<nombre>.png.png
         ├── ...
         └── resumen_iteraciones.png
 ```
@@ -66,7 +66,7 @@ docker run --rm -v "${PWD}/src:/app/src" busqueda-raices   # ejecuta datos.py y 
 
 Los CSV se generan en `src/data/` y los gráficos en `src/assets/`.
 
-### Sin Docker (local)
+### Sin Docker (local) para Python ≥ 3.12
 
 ```
 pip install -r requirements.txt       # numpy, matplotlib

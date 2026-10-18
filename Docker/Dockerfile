@@ -17,6 +17,6 @@ ENV MPLBACKEND=Agg
 # src se monta como volumen al ejecutar:
 #   docker run -it --rm -v "$(pwd)/src:/app/src" computacion-numerica
 VOLUME ["/app/src"]
-WORKDIR /app/src
+WORKDIR /app
 
-CMD ["bash"]
+CMD ["python", "src/scripts/main.py"]
