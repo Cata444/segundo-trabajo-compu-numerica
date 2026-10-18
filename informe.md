@@ -186,6 +186,12 @@ La función (x − 2)² tiene su raíz en x = 2, pero ahí la curva solo toca el
 
 ### 5. ¿Cómo influyen el intervalo inicial y la estimación inicial en las iteraciones y en la convergencia?
 
+**En bisección**, lo único que importa es qué tan ancho es el intervalo: mientras más ancho, más veces hay que partirlo por la mitad. Pero el efecto es pequeño, porque cada iteración lo va reduciendo a la mitad. Se puede calcular de antemano con su formula `n = ⌈log₂((b − a)/tol)⌉`: para [1, 2] da 20 iteraciones, igual que nuestros resultados. Si hay cambio de signo, siempre encuentra la raíz.
+
+**En Newton y secante** lo mas importante praacticamente es desde dónde se parte. Si el punto inicial está cerca de la raíz, llegan en 2 o 3 iteraciones. Si está lejos, o en una zona donde la curva es casi plana, pueden tardar muchasimo más o incluso no llegar nunca.
+
+**En punto fijo**, importa más qué g(x) se elige que el punto de partida: con una buena g llega rápido desde casi cualquier lado, y con una mala g no llega, es relativo.
+
 
 ### 6. ¿Qué método recomiendan según el tipo de función (velocidad vs robustez)?
 
