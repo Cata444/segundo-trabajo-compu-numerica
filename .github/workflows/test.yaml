@@ -24,6 +24,4 @@ jobs:
         
     # 3. Ejecuta los scripts del trabajo
     - name: Ejecutar programa principal
-      run: |
-        # Reemplaza 'main.py' por el nombre real de tu script
-        python ./src/scripts/main.py
+      run: python src/scripts/main.py
