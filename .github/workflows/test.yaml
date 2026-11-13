@@ -1,0 +1,29 @@
+name: CI Computación Numérica
+
+# Se ejecutará cada vez que alguien haga un push a la rama main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Clona el repositorio en la máquina virtual
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    # 2. Prepara el entorno (Ajusta la versión según lo que usen)
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        
+    # 3. Ejecuta los scripts del trabajo
+    - name: Ejecutar programa principal
+      run: |
+        # Reemplaza 'main.py' por el nombre real de tu script
+        python ./src/scripts/main.py
