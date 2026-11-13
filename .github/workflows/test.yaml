@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: "3.12"
     - name: Instalar Bibliotecas
-      run: pip install requirements.txt
+      run: pip install -r requirements.txt
     
     # 3. Ejecuta los scripts del trabajo
     - name: Ejecutar programa principal
