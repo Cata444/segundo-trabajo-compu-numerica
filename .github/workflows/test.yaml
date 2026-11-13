@@ -21,7 +21,9 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
-        
+    - name: Instalar Bibliotecas
+      run: pip install requirements.txt
+    
     # 3. Ejecuta los scripts del trabajo
     - name: Ejecutar programa principal
       run: python src/scripts/main.py
